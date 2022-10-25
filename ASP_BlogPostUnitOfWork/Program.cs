@@ -1,4 +1,5 @@
 using DAL;
+using Logic.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DbConnection");
 builder.Services.AddDbContext<BlogContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
