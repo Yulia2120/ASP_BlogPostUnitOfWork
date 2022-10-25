@@ -11,7 +11,8 @@ namespace Logic.Domain
         [DataType(DataType.Password)]
         public string Password { get; set; } = string.Empty;
 
-        public virtual List<Post>? Posts { get; set; }
+        public EnumRole EnumRole { get; set; }
+
 
     }
 }
