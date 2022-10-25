@@ -14,7 +14,7 @@ namespace Logic.Interfaces
 
         Task<T> GetByIdAsync(int id);
 
-        Task UpdateAsync(T item);
+        Task<T> UpdateAsync(T item);
 
         Task <bool> DeleteAsync(T item);
     }

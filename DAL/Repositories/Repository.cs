@@ -19,6 +19,21 @@ namespace DAL.Repositories
           
         }
 
+        public async Task<List<T>> GetAllAsync()
+        {
+            return await db.Set<T>().ToListAsync(); 
+        }
+        public async Task<T> GetByIdAsync(int id)
+        {
+            return await db.Set<T>().FindAsync(id);
+        }
+
+        public async Task<T> UpdateAsync(T item)
+        {
+             db.Set<T>().Update(item);
+             await db.SaveChangesAsync();
+             return item;
+        }
         public async Task<bool> DeleteAsync(T item)
         {
             db.Set<T>().Remove(item);
@@ -27,21 +42,6 @@ namespace DAL.Repositories
 
         } 
 
-        public async Task<List<T>> GetAllAsync()
-        {
-            return await db.Set<T>().ToListAsync(); 
-        }
 
-        public async Task<T> GetByIdAsync(int id)
-        {
-            return await db.Set<T>().FindAsync(id);
-        }
-
-        public async Task UpdateAsync(T item)
-        {
-             db.Set<T>().Update(item);
-             await db.SaveChangesAsync();
-
-        }
     }
 }

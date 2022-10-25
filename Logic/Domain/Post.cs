@@ -7,7 +7,11 @@ namespace Logic.Domain
         public string Title { get; set; }= string.Empty;
         public string Content { get; set; } = string.Empty;
         public DateTime PostedOn { get; set; }
+        public int UserId { get; set; }
+        public virtual User? User { get; set; }
         public int BlogId { get; set; }
         public virtual Blog? Blog { get; set; }
+
+
     }
 }
