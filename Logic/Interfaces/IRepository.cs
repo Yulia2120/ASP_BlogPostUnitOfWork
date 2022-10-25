@@ -8,14 +8,14 @@ namespace Logic.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-       Task <T> CreateAsync(T item);
+       Task <bool> CreateAsync(T item);
 
-        IAsyncEnumerable<T> GetAll();
+        Task <List<T>> GetAllAsync();
 
         Task<T> GetByIdAsync(int id);
 
         Task UpdateAsync(T item);
 
-        Task <T> DeleteAsync(T item);
+        Task <bool> DeleteAsync(T item);
     }
 }

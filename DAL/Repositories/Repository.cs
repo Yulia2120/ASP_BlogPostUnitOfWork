@@ -1,37 +1,47 @@
-﻿using Logic.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#pragma warning disable CS8603
+using Logic.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        public Task<T> CreateAsync(T item)
+        public BlogContext db;
+        public Repository(BlogContext context)
         {
-            throw new NotImplementedException();
+            db = context;
+        }
+        public async Task<bool> CreateAsync(T item)
+        {
+            await db.Set<T>().AddAsync(item);
+            await db.SaveChangesAsync();    
+            return true;
+          
         }
 
-        public Task<T> DeleteAsync(T item)
+        public async Task<bool> DeleteAsync(T item)
         {
-            throw new NotImplementedException();
+            db.Set<T>().Remove(item);
+            await db.SaveChangesAsync();
+            return true;
+
+        } 
+
+        public async Task<List<T>> GetAllAsync()
+        {
+            return await db.Set<T>().ToListAsync(); 
         }
 
-        public IAsyncEnumerable<T> GetAll()
+        public async Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await db.Set<T>().FindAsync(id);
         }
 
-        public Task<T> GetByIdAsync(int id)
+        public async Task UpdateAsync(T item)
         {
-            throw new NotImplementedException();
-        }
+             db.Set<T>().Update(item);
+             await db.SaveChangesAsync();
 
-        public Task UpdateAsync(T item)
-        {
-            throw new NotImplementedException();
         }
     }
 }
