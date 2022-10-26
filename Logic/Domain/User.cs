@@ -10,8 +10,8 @@ namespace Logic.Domain
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; } = string.Empty;
-
         public EnumRole EnumRole { get; set; }
+        public List <Post>? Posts { get; set; }
 
 
     }
