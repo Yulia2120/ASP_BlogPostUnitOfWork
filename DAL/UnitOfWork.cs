@@ -1,10 +1,5 @@
 ﻿using DAL.Repositories;
 using Logic.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -40,18 +35,18 @@ namespace DAL
             }
 
         }
-        private UserRepository _userRepository;
-        public IUserRepository UserRepository
+        private AccountRepository _accountRepository;
+        public IAccountRepository AccountRepository
         {
             get
             {
-                if (_userRepository == null)
-                    _userRepository = new UserRepository(_blogContext);
+                if (_accountRepository == null)
+                    _accountRepository = new AccountRepository(_blogContext);
 
-                return _userRepository;
+                return _accountRepository;
             }
         }
 
-       
+        public void Dispose() => GC.SuppressFinalize(this);
     }
 }

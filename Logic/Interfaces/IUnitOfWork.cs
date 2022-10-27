@@ -4,7 +4,7 @@
     {
         IBlogRepository BlogRepository { get; }
         IPostRepository PostRepository { get; }
-        IUserRepository UserRepository { get; }
+        IAccountRepository AccountRepository { get; }
 
      
     }

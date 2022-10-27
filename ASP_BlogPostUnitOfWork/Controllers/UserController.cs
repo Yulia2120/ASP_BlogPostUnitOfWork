@@ -1,5 +1,6 @@
 ﻿using Logic.Domain;
 using Logic.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP_BlogPostUnitOfWork.Controllers
@@ -20,11 +21,10 @@ namespace ASP_BlogPostUnitOfWork.Controllers
             return _ofWork.PostRepository.GetAllAsync();
         }
         [HttpGet("FindPostName")]
-        public Task<Post> FindPostName( string title)
+        public Task<Post> FindPostName(string title)
         {
             return _ofWork.PostRepository.FindPostName(title);
         }
-
 
     }
 }

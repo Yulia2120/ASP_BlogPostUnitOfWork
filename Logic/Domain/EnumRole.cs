@@ -8,6 +8,7 @@ namespace Logic.Domain
 {
     public enum EnumRole
     {
+        User,
         Admin
     }
 }

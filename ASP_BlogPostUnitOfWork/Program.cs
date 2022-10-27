@@ -27,5 +27,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+//var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<BlogContext>();
+//SeedData.SeedDatabase(context);
 app.Run();

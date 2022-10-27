@@ -1,12 +1,15 @@
 ﻿#pragma warning disable CS8603
+using Logic.Domain;
 using Logic.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : Identity
     {
         public BlogContext db;
+        private readonly int id;
+
         public Repository(BlogContext context)
         {
             db = context;
@@ -36,8 +39,13 @@ namespace DAL.Repositories
         }
         public async Task<bool> DeleteAsync(T item)
         {
+            var result = await db.Set<T>()
+                .FirstOrDefaultAsync(e => e.Id == id);
+            if (item != null)
+            {
             db.Set<T>().Remove(item);
             await db.SaveChangesAsync();
+            }
             return true;
 
         } 

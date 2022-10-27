@@ -15,18 +15,26 @@ namespace DAL.Repositories
         {
             return await db.Posts.OrderBy(x => x.Title).FirstOrDefaultAsync();
         }
-        public async Task<Post> UpdateAsyncPost(Post post)
+
+        public async Task<Post> GetByIdAsync(int? id)
         {
-            var postFromDb = await db.Posts.FindAsync(new object[] { post.PostId });
-            if (postFromDb != null)
+            return await db.Posts.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Post> UpdateAsyncPost(int? id)
+        {
+            var post = await db.Posts.FirstOrDefaultAsync(x => x.Id == id);
+            if (post != null)
             {
-            postFromDb.Title = post.Title;
-            postFromDb.Content = post.Content;
-            postFromDb.PostedOn = post.PostedOn;
+            post.Title = post.Title;
+            post.Content = post.Content;
+            post.PostedOn = post.PostedOn;
             }
             await db.SaveChangesAsync();
             return post;
          
         }
+
+       
     }
 }

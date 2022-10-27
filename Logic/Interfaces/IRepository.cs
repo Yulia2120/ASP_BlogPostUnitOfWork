@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Logic.Domain;
 
 namespace Logic.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : Identity
     {
        Task <bool> CreateAsync(T item);
 
