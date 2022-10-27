@@ -3,7 +3,7 @@ using Logic.Interfaces;
 
 namespace DAL
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private BlogContext _blogContext;
         public UnitOfWork(BlogContext context)
