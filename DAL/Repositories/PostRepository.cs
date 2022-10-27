@@ -13,7 +13,7 @@ namespace DAL.Repositories
 
         public async Task<Post> FindPostName(string title)
         {
-            return await db.Posts.OrderBy(x => x.Title).FirstOrDefaultAsync();
+            return await db.Posts.FirstOrDefaultAsync(t=> t.Title == title);
         }
 
         public async Task<Post> GetByIdAsync(int? id)

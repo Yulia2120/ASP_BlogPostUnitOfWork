@@ -13,8 +13,8 @@ namespace ASP_BlogPostUnitOfWork.Controllers
             _ofWork = ofWork;
 
         }
-        [Route("Login")]
-        [HttpPost]
+     
+        [HttpPost("Login")]
         public IActionResult Login(string email, string password)
         {
           var user = _ofWork.AccountRepository.AuthenticateUser(email, password);          
