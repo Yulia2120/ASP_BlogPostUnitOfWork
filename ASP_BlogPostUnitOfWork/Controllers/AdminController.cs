@@ -49,3 +49,4 @@ namespace ASP_BlogPostUnitOfWork.Controllers
 
     }
 }
+//http://teddi2518-001-site1.gtempurl.com/api/Admin/
