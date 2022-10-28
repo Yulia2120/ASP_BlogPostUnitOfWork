@@ -21,15 +21,9 @@ namespace DAL.Repositories
             return await db.Posts.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Post> UpdateAsyncPost(int? id)
+        public async Task<Post> UpdateAsyncPost(Post post)
         {
-            var post = await db.Posts.FirstOrDefaultAsync(x => x.Id == id);
-            if (post != null)
-            {
-            post.Title = post.Title;
-            post.Content = post.Content;
-            post.PostedOn = post.PostedOn;
-            }
+            db.Posts.UpdateRange();
             await db.SaveChangesAsync();
             return post;
          

@@ -5,7 +5,7 @@ namespace Logic.Interfaces
     public interface IPostRepository:IRepository<Post>
     {
         public  Task<Post> FindPostName(string title);
-        public Task<Post> UpdateAsyncPost(int? id);
+        public Task<Post> UpdateAsyncPost(Post post);
         Task<Post> GetByIdAsync(int? id);
     }
 }

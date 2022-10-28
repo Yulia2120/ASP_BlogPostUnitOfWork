@@ -35,9 +35,9 @@ namespace ASP_BlogPostUnitOfWork.Controllers
             return _ofWork.PostRepository.CreateAsync(entity);
         }
         [HttpPost("UpdatePost")]
-        public Task<Post> UpdatePost(int? id)
+        public Task<Post> UpdatePost(Post post)
         {
-            return _ofWork.PostRepository.UpdateAsyncPost(id);
+            return _ofWork.PostRepository.UpdateAsyncPost(post);
         }
 
         [HttpDelete("Delete")]
