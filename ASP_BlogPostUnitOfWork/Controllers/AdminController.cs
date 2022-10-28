@@ -17,7 +17,7 @@ namespace ASP_BlogPostUnitOfWork.Controllers
         }
 
         [HttpGet]
-        public Task<List<Post>> GetAllPost()
+        public Task<List<Post>> GetAllPosts()
         {
             return _ofWork.PostRepository.GetAllAsync();
         }
