@@ -14,11 +14,12 @@ namespace DAL.Repositories
         {
             db = context;
         }
-        public async Task<bool> CreateAsync(T item)
+        public async Task<T> CreateAsync(T item)
         {
             await db.Set<T>().AddAsync(item);
-            await db.SaveChangesAsync();    
-            return true;
+            await db.SaveChangesAsync(); 
+            return item;
+           
           
         }
 

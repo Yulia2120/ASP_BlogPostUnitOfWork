@@ -29,10 +29,10 @@ namespace ASP_BlogPostUnitOfWork.Controllers
 
         }
 
-        [HttpPost("AddPost")]
-        public Task<bool> AddPost(Post entity)
+        [HttpPost]
+        public Task<Post> AddPost(Post post)
         {
-            return _ofWork.PostRepository.CreateAsync(entity);
+            return _ofWork.PostRepository.CreateAsync(post);
         }
         [HttpPost("UpdatePost")]
         public Task<Post> UpdatePost(Post post)

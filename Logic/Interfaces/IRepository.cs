@@ -4,7 +4,7 @@ namespace Logic.Interfaces
 {
     public interface IRepository<T> where T : Identity
     {
-       Task <bool> CreateAsync(T item);
+       Task <T> CreateAsync(T item);
 
         Task <List<T>> GetAllAsync();
 
