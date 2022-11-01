@@ -9,9 +9,9 @@ namespace DAL
          : base(options)
         {
         }
-        public DbSet<Blog> Blogs { get; set; }
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Blog> Blogs { get; set; } = null!;
+        public DbSet<Post> Posts { get; set; } = null!;
+        public DbSet<Account> Accounts { get; set; } = null!;
 
     }
 }
