@@ -30,7 +30,7 @@ namespace ASP_BlogPostUnitOfWork.Controllers
         }
 
         [HttpPost]
-        public Task<Post> AddPost(Post post)
+        public Task<Post> AddPost([FromForm]Post post)
         {
             return _ofWork.PostRepository.CreateAsync(post);
         }
